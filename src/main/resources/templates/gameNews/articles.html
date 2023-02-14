@@ -1,19 +1,26 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>General</title>
+    <title>Articles</title>
     <th:block th:replace="/partials/partials.html :: head"></th:block>
 </head>
 <body>
 <nav th:replace="/partials/partials.html :: navbar"></nav>
-<h1>General page</h1>
+<h1>Article Page(will populate soon)</h1>
+
+<form action="/fileupload" method="POST" enctype="multipart/form-data">
+    <label for="file">Upload a file!</label>
+    <input id="file" name="file" type="file" />
+    <br />
+    <input type="submit" value="upload" />
+</form>
 
 <th:block th:replace="/partials/partials.html :: scripts"></th:block>
 <script src="/js/keys.js"></script>
-<script src="/js/generalFetch.js"></script>
+<script src="/js/articlesFetch.js"></script>
 </body>
 </html>

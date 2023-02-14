@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class newController {
+public class NewsController {
 
     @GetMapping(path ="/nintendoNews")
     public String nintendoNews(){
@@ -15,4 +15,10 @@ public class newController {
     public String generalNewsPage(){
         return "gameNews/general";
     }
+
+    @GetMapping(path = "/articles")
+    public String articlesPage(){
+        return "/gameNews/articles";
+    }
+
 }
