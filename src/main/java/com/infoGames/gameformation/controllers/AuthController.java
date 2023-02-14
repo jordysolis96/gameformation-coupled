@@ -2,6 +2,7 @@ package com.infoGames.gameformation.controllers;
 
 import com.infoGames.gameformation.models.User;
 import com.infoGames.gameformation.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class AuthController {
 
     private UserRepository userDao;
+    private PasswordEncoder passwordEncoder;
 
-    public AuthController(UserRepository userDao){
+    public AuthController(UserRepository userDao, PasswordEncoder passwordEncoder){
         this.userDao = userDao;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @GetMapping(path = "/login")
@@ -30,6 +33,8 @@ public class AuthController {
 
     @PostMapping(path = "/signup")
     public String signup(@ModelAttribute User user){
+        String hash = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hash);
         userDao.save(user);
         return "redirect:/profile";
     }
