@@ -1,4 +1,5 @@
 console.log("General fetch page");
+
 var tbody = document.getElementById('news');
 const options = {
     method: 'GET',
@@ -8,7 +9,11 @@ const options = {
     }
 };
 
-fetch('https://videogames-news2.p.rapidapi.com/videogames_news/search_news?query=brawhalla', options)
+let searchBtn = document.getElementById("search-btn");
+let search = document.forms.search.input;
+searchBtn.addEventListener("click", function (){
+    console.log(search.value);
+fetch('https://videogames-news2.p.rapidapi.com/videogames_news/search_news?query=' + search.value, options)
     .then(response => response.json())
     // .then(response => console.log(response))
     .then(response => {
@@ -26,13 +31,15 @@ fetch('https://videogames-news2.p.rapidapi.com/videogames_news/search_news?query
 
     })
     .catch(err => console.error(err));
+});
 
 
 function renderNews(news) {
     console.log("news rending")
     var html = '<div class="card mb-3">';
     html += '<img src="' + news.image + '" class="card-img-top" id="img" alt="...">';
-    html += '<h4 class = "card-title">' + news.title + '</h4>';
+    html += '<h4 class = "card-title">' + news.title + " " + news.date + '</h4>';
+    html += '<p class = "card-title">' + news.description + '</p>';
     html += '</div>';
     console.log(news.image);
     return html;

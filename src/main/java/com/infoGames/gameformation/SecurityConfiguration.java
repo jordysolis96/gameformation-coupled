@@ -52,7 +52,7 @@ public class SecurityConfiguration {
                 .and()
                 .authorizeRequests()
                 .requestMatchers(
-                        "/nintendoNews", "/generalNews", "/articles" // only authenticated users can create ads
+                        "/nintendoNews", "/generalNews", "/articles", "discussion" // only authenticated users can create ads
                 )
                 .authenticated()
         ;

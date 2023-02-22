@@ -25,8 +25,11 @@ public class Post {
     private LocalDate localDate;
 
     @ManyToOne
-    @JoinColumn (name = "post_id")
+    @JoinColumn (name = "category_id")
     private Category category;
+
+    @OneToOne
+    private User user;
 
     public Post(){}
 
@@ -83,5 +86,13 @@ public class Post {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

@@ -11,6 +11,13 @@
 <body>
 <nav th:replace="/partials/partials.html :: navbar"></nav>
 <h1>General page</h1>
+<form name="search">
+    <label>
+    <input placeholder="game title" name="input">
+    </label>
+    <button type="button" id="search-btn">Search</button>
+</form>
+
 
 <div class="card mb-3">
     <div id="news"></div>

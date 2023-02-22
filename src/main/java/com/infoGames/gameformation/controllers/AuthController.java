@@ -36,7 +36,7 @@ public class AuthController {
         String hash = passwordEncoder.encode(user.getPassword());
         user.setPassword(hash);
         userDao.save(user);
-        return "redirect:/profile";
+        return "redirect:/login";
     }
 
     @GetMapping(path = "/profile")

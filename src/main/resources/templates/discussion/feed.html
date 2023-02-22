@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,6 +8,33 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Community</h1>
+<form th:method="post" th:action="@{/create/post}" th:object="${post}">
+    <label for="name">name</label>
+    <input id="name" th:field="*{title}">
+    <label for="system">system</label>
+    <input id="system" th:field="*{system}">
+    <label for="body">body</label>
+    <input id="body" th:field="*{body}">
+<!--    <label for="category">category</label>-->
+    <select id="category" name="category">
+        <option value="1" th:text="Action"></option>
+        <option value="2" th:text="Shooter"></option>
+        <option value="3" th:text="Couch"></option>
+        <option value="4" th:text="Fantasy"></option>
+        <option value="5" th:text="MMO"></option>
+        <option value="6" th:text="RPG"></option>
+        <option value="7" th:text="MISC"></option>
+    </select>
+<!--    <input id="category" th:field="*{category}">-->
+    <button type="submit">Post</button>
+</form>
 
+<div th:each="post : ${posts}">
+    <h1 th:text="${'posted by: ' + post.user.getUsername()}"></h1>
+    <h2 th:text="${post.title + ':'}"></h2>
+    <h3 th:text="${post.category.getName() + ':'}"></h3>
+    <p th:text="${post.body}"></p>
+</div>
 </body>
 </html>
